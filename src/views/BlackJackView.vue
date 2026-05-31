@@ -4,7 +4,7 @@ import MHeader from '@/components/MHeader.vue'
 
 <template>
   <main>
-    <MHeader level="1">BlackJask</MHeader>
+    <MHeader level="1">BlackJack</MHeader>
   </main>
 </template>
 

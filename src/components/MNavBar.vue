@@ -8,6 +8,8 @@
       <RouterLink to="/hangman" class="center-vertical"><h3>Hangman</h3></RouterLink>
       <div class="divider"></div>
       <RouterLink to="/blackjack" class="center-vertical"><h3>BlackJack</h3></RouterLink>
+      <div class="divider"></div>
+      <RouterLink to="/text_search" class="center-vertical"><h3>Поиск</h3></RouterLink>
     </div>
   </nav>
 </template>

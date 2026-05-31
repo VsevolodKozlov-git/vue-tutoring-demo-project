@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'blackjack',
       component: () => import('@/views/BlackJackView.vue'),
     },
+    {
+      path: '/text_search',
+      name: 'text_search',
+      component: () => import('@/views/TextSearch.vue'),
+    },
   ],
 })
 
