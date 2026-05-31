@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'text_search',
       component: () => import('@/views/TextSearch.vue'),
     },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: () => import('@/views/ToDoView.vue'),
+    },
   ],
 })
 
