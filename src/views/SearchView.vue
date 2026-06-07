@@ -1,24 +1,29 @@
 <template>
   <MHeader level="1">Текстовый поиск</MHeader>
-  <form @submit.prevent="processSend">
-    <div>
-      <div>Запрос:</div>
-      <input required type="text" name="query" v-model="query" />
-    </div>
-    <div>
-      <div>Алгоритм:</div>
-      <select required name="algorithm" v-model="algorithm">
-        <option default value="tf-idf">TF-IDF</option>
-        <option value="bag-of-words">Bag of words</option>
+  <MCard>
+    <template #header> Параметры запроса </template>
+    <template #content>
+      <form @submit.prevent="processSend">
+        <div>
+          <div>Запрос:</div>
+          <input required type="text" name="query" v-model="query" />
+        </div>
+        <div>
+          <div>Алгоритм:</div>
+          <select required name="algorithm" v-model="algorithm">
+            <option default value="tf-idf">TF-IDF</option>
+            <option value="bag-of-words">Bag of words</option>
+          </select>
+        </div>
+        <input type="submit" />
+      </form>
+      <div>Порядок сортировки:</div>
+      <select name="order" v-model="order">
+        <option value="distance">По расстоянию</option>
+        <option value="title">По названию</option>
       </select>
-    </div>
-    <input type="submit" />
-  </form>
-  <div>Порядок сортировки:</div>
-  <select name="order" v-model="order">
-    <option value="distance">По расстоянию</option>
-    <option value="title">По названию</option>
-  </select>
+    </template>
+  </MCard>
   <div v-if="!isSended">Для поиска введите запрос и нажмите "Отправить"</div>
   <table v-else>
     <thead>
@@ -35,6 +40,7 @@
 </template>
 
 <script setup>
+import MCard from '@/components/MCard.vue'
 import MHeader from '@/components/MHeader.vue'
 import { computed, ref } from 'vue'
 const query = ref(null)
