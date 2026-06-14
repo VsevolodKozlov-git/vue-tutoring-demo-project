@@ -28,6 +28,16 @@ const router = createRouter({
       name: 'cat_facts',
       component: () => import('@/views/CatFactView.vue'),
     },
+    {
+      path: '/lotr_random_quote',
+      name: 'lotr_random_quote',
+      component: () => import('@/views/LotrRandomQuoteView.vue'),
+    },
+        {
+      path: '/lotr_filter_character',
+      name: 'lotr_filter_character',
+      component: () => import('@/views/LotrFilterCharacterView.vue'),
+    },
   ],
 })
 
