@@ -4,8 +4,10 @@ import MNavBar from '@/components/MNavBar.vue'
 </script>
 
 <template>
-  <MNavBar />
-  <RouterView />
+  <UApp>
+    <MNavBar />
+    <RouterView />
+  </UApp>
 </template>
 
 <style scoped></style>
