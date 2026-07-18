@@ -38,6 +38,11 @@ const router = createRouter({
       name: 'lotr_filter_character',
       component: () => import('@/views/LotrFilterCharacterView.vue'),
     },
+            {
+      path: '/show',
+      name: 'show',
+      component: () => import('@/views/ShowView.vue'),
+    },
   ],
 })
 
