@@ -1,21 +1,29 @@
 <template>
-  <nav class="flex-nav">
-    <RouterLink to="/">
-      <h2 class="games">Игры</h2>
-    </RouterLink>
 
-    <div class="flex-links">
-      <RouterLink to="/hangman" class="center-vertical"><h3>Hangman</h3></RouterLink>
-      <div class="divider"></div>
-      <RouterLink to="/blackjack" class="center-vertical"><h3>BlackJack</h3></RouterLink>
-      <div class="divider"></div>
-      <RouterLink to="/search" class="center-vertical"><h3>Текстовый поиск</h3></RouterLink>
-    </div>
-  </nav>
+  <UHeader>
+    <template #title>
+      <ULink to="/">МикроПроекты</ULink>
+    </template>
+    
+    <UNavigationMenu :items="menuItems"/>
+
+    <template #right>
+      <UButton color="neutral" variant="ghost" target="_blank" to="https://github.com/VsevolodKozlov-git/vue-tutoring-demo-project">Github</UButton>
+    </template>
+  </UHeader>
+
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import { computed } from 'vue';
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const menuItems = computed(() => [
+  {label: 'Hangman', to: '/hangman', active: route.path.startsWith('/hangman')},
+  {label: 'BlackJack', to: '/blackjack', active: route.path.startsWith('/blackjack')},
+])
 </script>
 
 <style lang="css" scoped>

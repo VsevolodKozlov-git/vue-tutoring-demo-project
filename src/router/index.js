@@ -33,10 +33,15 @@ const router = createRouter({
       name: 'lotr_random_quote',
       component: () => import('@/views/LotrRandomQuoteView.vue'),
     },
-        {
+    {
       path: '/lotr_filter_character',
       name: 'lotr_filter_character',
       component: () => import('@/views/LotrFilterCharacterView.vue'),
+    },
+    {
+      path: '/lotr_filter_character_nuxt',
+      name: 'lotr_filter_character_nuxt',
+      component: () => import('@/views/LotrFilterCharacterNuxt.vue'),
     },
   ],
 })
