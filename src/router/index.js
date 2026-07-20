@@ -34,14 +34,14 @@ const router = createRouter({
       component: () => import('@/views/LotrRandomQuoteView.vue'),
     },
     {
-      path: '/lotr_filter_character',
-      name: 'lotr_filter_character',
-      component: () => import('@/views/LotrFilterCharacterView.vue'),
+      path: '/lotr_filter_character_vanilla',
+      name: 'lotr_filter_character_vanilla',
+      component: () => import('@/views/LotrFilterCharacterVanillaView.vue'),
     },
     {
       path: '/lotr_filter_character_nuxt',
       name: 'lotr_filter_character_nuxt',
-      component: () => import('@/views/LotrFilterCharacterNuxt.vue'),
+      component: () => import('@/views/LotrFilterCharacterNuxtView.vue'),
     },
   ],
 })
