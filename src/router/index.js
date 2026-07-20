@@ -43,6 +43,11 @@ const router = createRouter({
       name: 'lotr_filter_character_nuxt',
       component: () => import('@/views/LotrFilterCharacterNuxtView.vue'),
     },
+            {
+      path: '/show',
+      name: 'show',
+      component: () => import('@/views/ShowView.vue'),
+    },
   ],
 })
 
