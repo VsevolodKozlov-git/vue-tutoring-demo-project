@@ -10,7 +10,7 @@
 
     <UButton type="submit">Найти персонажей</UButton>
   </UForm>
-  <UTable :data="characters" :columns="tableColumns"> </UTable>
+  <UTable v-if="characters" :data="characters" :columns="tableColumns"> </UTable>
 </template>
 
 <script setup>

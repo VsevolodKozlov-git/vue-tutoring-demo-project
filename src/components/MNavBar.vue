@@ -1,29 +1,94 @@
 <template>
-
-  <UHeader>
+  <UHeader toggle-side="right" mode="slideover">
     <template #title>
       <ULink to="/">МикроПроекты</ULink>
     </template>
-    
-    <UNavigationMenu :items="menuItems"/>
+
+    <div class="min-w-75">
+      <UNavigationMenu :items="menuItems" orientation="horizontal" />
+    </div>
+
+    <template #body>
+      <UNavigationMenu :items="menuItems" orientation="vertical" />
+    </template>
+    <!-- <UNavigationMenu :items="menuItems" orientation="vertical" type="drawer" /> -->
 
     <template #right>
-      <UButton color="neutral" variant="ghost" target="_blank" to="https://github.com/VsevolodKozlov-git/vue-tutoring-demo-project">Github</UButton>
+      <UButton
+        color="neutral"
+        variant="ghost"
+        target="_blank"
+        to="https://github.com/VsevolodKozlov-git/vue-tutoring-demo-project"
+        >Github</UButton
+      >
+
+      <UColorModeSwitch />
     </template>
   </UHeader>
-
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const menuItems = computed(() => [
-  {label: 'Hangman', to: '/hangman', active: route.path.startsWith('/hangman')},
-  {label: 'BlackJack', to: '/blackjack', active: route.path.startsWith('/blackjack')},
-])
+const menuItems = [
+  [
+    {
+      label: 'Игры',
+      children: [
+        {
+          label: 'Hangman',
+          description: 'Классическая игра «Виселица»',
+          to: '/hangman',
+        },
+        {
+          label: 'Blackjack',
+          description: 'Карточная игра «Блэкджек»',
+          to: '/blackjack',
+        },
+      ],
+    },
+  ],
+  [
+    {
+      label: 'Работа с API',
+      children: [
+        {
+          label: 'Поиск',
+          description: 'Текстовый поиск (Work In Progress)',
+          to: '/search',
+        },
+        {
+          label: 'Факты о котах',
+          description: 'Случайные факты о котах',
+          to: '/cat_facts',
+        },
+        {
+          label: 'LOTR цитаты',
+          description: 'Случайная цитата из «Властелина колец»',
+          to: '/lotr_random_quote',
+        },
+        {
+          label: 'LOTR фильтрация Vanilla',
+          description: 'Фильтрация персонажей (чистый JS)',
+          to: '/lotr_filter_character_vanilla',
+        },
+        {
+          label: 'LOTR фильтрация Nuxt',
+          description: 'Фильтрация персонажей (Nuxt)',
+          to: '/lotr_filter_character_nuxt',
+        },
+        {
+          label: 'Post-запрос',
+          description: 'Добавление нового продукта',
+          to: '/add_product',
+        },
+      ],
+    },
+  ],
+]
 </script>
 
 <style lang="css" scoped>

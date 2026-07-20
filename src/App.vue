@@ -6,7 +6,7 @@ import MNavBar from '@/components/MNavBar.vue'
 <template>
   <UApp>
     <MNavBar />
-    <UMain>
+    <UMain class="p-5">
       <RouterView />
     </UMain>
   </UApp>
