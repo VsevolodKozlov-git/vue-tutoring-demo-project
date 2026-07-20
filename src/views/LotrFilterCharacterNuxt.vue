@@ -11,7 +11,6 @@
     <UButton type="submit">Найти персонажей</UButton>
   </UForm>
   <UTable :data="characters" :columns="tableColumns"> </UTable>
-  <UBadge>This is badge</UBadge>
 </template>
 
 <script setup>
@@ -42,21 +41,20 @@ const tableColumns = [
   {
     accessorKey: 'death',
     header: 'Умер?',
-    cell: ({row}) => {
+    cell: ({ row }) => {
       const death = row.getValue('death')
       const props = {}
       let text
       if (death === null) {
         props.color = 'error'
         text = 'No data'
-      }
-      else{
+      } else {
         props.color = 'success'
         text = death
       }
-      
+
       return h(UBadge, props, text)
-    }
+    },
   },
 ]
 
