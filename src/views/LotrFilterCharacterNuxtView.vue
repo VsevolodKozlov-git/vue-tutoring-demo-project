@@ -12,15 +12,16 @@
   </UForm>
   <UTable v-if="characters" :data="characters" :columns="tableColumns"> </UTable>
 </template>
-
 <script setup>
 import axios from 'axios'
 import { h, ref } from 'vue'
 import UBadge from '@nuxt/ui/components/Badge.vue'
 
+// Используется чтобы выводить всплывающие окна в правом нижнем углу
 const toast = useToast()
 
 const formValues = ref({ race: null, gender: null })
+
 const raceItems = [
   { label: 'Орк', value: 'Orcs' },
   { label: 'Эльф', value: 'Elf' },
@@ -35,12 +36,14 @@ const genderItems = [
 
 const tableColumns = [
   {
-    accessorKey: 'name',
-    header: 'Имя',
+    accessorKey: 'name', // Наименование атрибута в данных API
+    header: 'Имя', // Отображаемое имя столбца
   },
   {
     accessorKey: 'death',
     header: 'Умер?',
+    // Это более продвинутый функционал, можете его не использовать в ДЗ
+    // Если используете, будет плюсом
     cell: ({ row }) => {
       const death = row.getValue('death')
       const props = {}
@@ -58,6 +61,8 @@ const tableColumns = [
   },
 ]
 
+// Возвращает список ошибок, допущенных в форме
+// Пока не будет пустым форма не отправится
 const validateForm = () => {
   const errors = []
   if (!formValues.value.race) {
@@ -89,6 +94,7 @@ const getCharacters = async () => {
     params,
   })
   characters.value = charactersRequest.data.docs
+  // Выводит всплывающее окно в правом нижнем углу
   toast.add({ title: 'Успех', description: 'Данные успешно получены', color: 'success' })
 }
 </script>
