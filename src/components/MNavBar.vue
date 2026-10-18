@@ -14,6 +14,11 @@
     <!-- <UNavigationMenu :items="menuItems" orientation="vertical" type="drawer" /> -->
 
     <template #right>
+      <UButton v-if="authState" color="neutral" variant="ghost" @click="logout">Выйти</UButton>
+      <template v-else>
+        <UButton color="neutral" variant="ghost" to="/login">Вход</UButton>
+        <UButton color="primary" to="/register">Регистрация</UButton>
+      </template>
       <UButton
         color="neutral"
         variant="ghost"
@@ -28,10 +33,16 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
-const route = useRoute()
+import { authState, removeToken } from '@/utils/auth'
+
+const router = useRouter()
+
+const logout = () => {
+  removeToken()
+  router.push('/')
+}
 
 const menuItems = [
   [
@@ -84,6 +95,18 @@ const menuItems = [
           label: 'Post-запрос',
           description: 'Добавление нового продукта',
           to: '/add_product',
+        },
+      ],
+    },
+  ],
+  [
+    {
+      label: 'Для авторизованных',
+      children: [
+        {
+          label: 'Профиль',
+          description: 'Информация о пользователе',
+          to: '/profile',
         },
       ],
     },

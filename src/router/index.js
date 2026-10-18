@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { isAuthorized } from '@/utils/auth'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -23,7 +25,7 @@ const router = createRouter({
       name: 'search',
       component: () => import('@/views/SearchView.vue'),
     },
-        {
+    {
       path: '/cat_facts',
       name: 'cat_facts',
       component: () => import('@/views/CatFactView.vue'),
@@ -48,7 +50,29 @@ const router = createRouter({
       name: 'add_product',
       component: () => import('@/views/AddProductView.vue'),
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/LoginView.vue'),
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/RegisterView.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('@/views/ProfileView.vue'),
+      meta: { requiresAuth: true },
+    },
   ],
+})
+
+router.beforeEach((to) => {
+  if (to.meta.requiresAuth && !isAuthorized()) {
+    return { path: '/login', query: { redirect: to.fullPath } }
+  }
 })
 
 export default router

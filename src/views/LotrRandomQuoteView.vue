@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { axiosInstance } from '@/axiosBase'
+import { axiosInstance } from '@/utils/api/axiosBase'
 import MButton from '@/components/MButton.vue'
 import axios from 'axios'
 import { ref } from 'vue'

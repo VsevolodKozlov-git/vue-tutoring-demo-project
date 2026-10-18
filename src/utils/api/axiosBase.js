@@ -1,4 +1,4 @@
-import { create } from "axios";
+import { create } from 'axios'
 
 export const axiosInstance = create({
   headers: {
